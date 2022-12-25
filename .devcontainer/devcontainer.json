@@ -2,9 +2,16 @@
 	"name": "Rocky 9.1",
 	"build": {
 		"context": ".",
-		"dockerfile": "Dockerfile"
+		"dockerfile": "Dockerfile",
+		"args": {
+			"container_user": "devops",
+			"image_version": "9.1"
+		}
 	},
 	"runArgs": [
 		"--hostname=rocky9-dogfood"
+	],
+	"mounts": [
+		"source=rocky9-dogfood-local-state,target=/home/devops/.local/var/state"
 	]
 }

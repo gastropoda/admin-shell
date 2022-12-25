@@ -1,4 +1,5 @@
-FROM rockylinux:9.1
+ARG image_version=9.1
+FROM rockylinux:$image_version
 RUN dnf update -y \
   && dnf install -y \
     bind-utils \
@@ -8,5 +9,8 @@ RUN dnf update -y \
     mtr \
     traceroute \
   && dnf clean all
-RUN useradd --create-home --shell /bin/bash devops
-USER devops
+
+ARG container_user=devops
+RUN useradd --create-home --shell /bin/bash $container_user
+USER $container_user
+RUN mkdir -p ~/.local/var/state
