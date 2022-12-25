@@ -3,5 +3,8 @@
 	"build": {
 		"context": ".",
 		"dockerfile": "Dockerfile"
-	}
+	},
+	"runArgs": [
+		"--hostname=rocky9-dogfood"
+	]
 }
