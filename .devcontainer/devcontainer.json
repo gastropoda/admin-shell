@@ -12,6 +12,6 @@
 		"--hostname=rocky9-dogfood"
 	],
 	"mounts": [
-		"source=rocky9-dogfood-local-state,target=/home/devops/.local/var/state"
+		"source=${devcontainerId}-state,target=/home/devops/.local/var/state"
 	]
 }
