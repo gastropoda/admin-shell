@@ -13,7 +13,7 @@
 	],
 	"mounts": [
 		"source=${devcontainerId}-state,target=/home/devops/.local/state",
-		"source=${devcontainerId}-data,target=/home/devops/.local/data",
+		"source=${devcontainerId}-data,target=/home/devops/.local/share",
 		"source=${devcontainerId}-cache,target=/home/devops/.cache"
 	]
 }

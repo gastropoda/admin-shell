@@ -17,5 +17,5 @@ RUN dnf update -y \
 ARG container_user=devops
 RUN useradd --create-home --shell /bin/bash $container_user
 USER $container_user
-RUN mkdir -p /home/$container_user/{.local/state,.local/data,.cache}
+RUN mkdir -p /home/$container_user/{.local/state,.local/share,.cache}
 ENV HISTFILE=/home/$container_user/.local/state/bash_history
