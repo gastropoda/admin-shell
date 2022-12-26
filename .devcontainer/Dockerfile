@@ -1,6 +1,10 @@
 ARG image_version=9.1
 FROM rockylinux:$image_version
 RUN dnf update -y \
+  && dnf install dnf-plugins-core -y \
+  && dnf config-manager --set-enabled crb \
+  && dnf install epel-release -y \
+  && dnf update -y \
   && dnf upgrade --refresh -y \
   && dnf install -y \
     bind-utils \
