@@ -12,6 +12,8 @@
 		"--hostname=${localWorkspaceFolderBasename}"
 	],
 	"mounts": [
-		"source=${devcontainerId}-state,target=/home/devops/.local/var/state"
+		"source=${devcontainerId}-state,target=/home/devops/.local/state",
+		"source=${devcontainerId}-data,target=/home/devops/.local/data",
+		"source=${devcontainerId}-cache,target=/home/devops/.cache"
 	]
 }
