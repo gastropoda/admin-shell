@@ -1,7 +1,6 @@
 {
 	"name": "Rocky 9.1",
 	"build": {
-		"context": ".",
 		"dockerfile": "Dockerfile",
 		"args": {
 			"container_user": "devops",
