@@ -13,8 +13,9 @@ RUN dnf update -y \
     lastpass-cli \
     mtr \
     traceroute
+
 ARG container_user=devops
 RUN useradd --create-home --shell /bin/bash $container_user
 USER $container_user
-RUN mkdir -p /home/$container_user/.local/state
+RUN mkdir -p /home/$container_user/{.local/state,.local/data,.cache}
 ENV HISTFILE=/home/$container_user/.local/state/bash_history
