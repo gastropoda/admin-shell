@@ -19,3 +19,8 @@ RUN useradd --create-home --shell /bin/bash $container_user
 USER $container_user
 RUN mkdir -p /home/$container_user/{.local/state,.local/share,.cache}
 ENV HISTFILE=/home/$container_user/.local/state/bash_history
+
+# lastpass-cli attempts to follow XDG specification but fails.
+# help it comply
+ENV LPASS_HOME=/home/$container_user/.local/share/lpass
+RUN mkdir -p $LPASS_HOME
