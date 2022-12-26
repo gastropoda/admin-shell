@@ -9,7 +9,7 @@
 		}
 	},
 	"runArgs": [
-		"--hostname=rocky9-dogfood"
+		"--hostname=${localWorkspaceFolderBasename}"
 	],
 	"mounts": [
 		"source=${devcontainerId}-state,target=/home/devops/.local/var/state"
