@@ -1,10 +1,11 @@
 {
-	"name": "Rocky 9.1",
+	"name": "Rocky Linux",
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": {
 			"container_user": "devops",
-			"image_version": "9.1"
+			// for now because I can't find lastpass-cli for 9
+			"image_version": "8"
 		}
 	},
 	"runArgs": [
