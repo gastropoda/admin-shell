@@ -12,6 +12,8 @@ RUN dnf update -y \
     iputils \
     lastpass-cli \
     mtr \
+    procps-ng \
+    socat \
     traceroute
 
 ARG container_user=devops
