@@ -15,6 +15,7 @@ RUN dnf update -y \
     procps-ng \
     socat \
     traceroute \
+    unzip \
   && dnf clean all
 
 ARG container_user=devops
@@ -27,3 +28,16 @@ ENV HISTFILE=/home/$container_user/.local/state/bash_history
 # help it comply
 ENV LPASS_HOME=/home/$container_user/.local/share/lpass
 RUN mkdir -p $LPASS_HOME
+
+ARG ohmyposh_base_url=https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download
+RUN mkdir -p /home/$container_user/.local/bin \
+  && curl $ohmyposh_base_url/posh-linux-amd64 \
+    -Lo /home/$container_user/.local/bin/oh-my-posh \
+  && chmod 0744 /home/$container_user/.local/bin/oh-my-posh \
+  && mkdir /home/$container_user/.poshthemes \
+  && curl $ohmyposh_base_url/themes.zip \
+    -Lo /home/$container_user/.poshthemes/themes.zip \
+  && unzip /home/$container_user/.poshthemes/themes.zip \
+    -d /home/$container_user/.poshthemes \
+  && chmod u+rw /home/$container_user/.poshthemes/*.omp.* \
+  && rm /home/$container_user/.poshthemes/themes.zip
