@@ -17,6 +17,7 @@ RUN dnf update -y \
     sudo \
     traceroute \
     unzip \
+    wget \
   && dnf clean all
 
 # WSL base image specific, to extract into its own image later
@@ -25,7 +26,9 @@ ADD wsl.conf resolv-default.conf /etc
 RUN sed -ir '/%wheel/s/^#? */# /;/%wheel.*NOPASS/s/^# *//' /etc/sudoers
 
 ARG container_user=devops
-RUN useradd --create-home --shell /bin/bash --groups wheel $container_user
+RUN groupadd docker
+RUN useradd --create-home --shell /bin/bash --groups wheel,docker \
+  $container_user
 USER $container_user
 RUN mkdir -p /home/$container_user/{.local/state,.local/share,.cache}
 ENV HISTFILE=/home/$container_user/.local/state/bash_history
