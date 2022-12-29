@@ -14,12 +14,15 @@ RUN dnf update -y \
     mtr \
     procps-ng \
     socat \
+    sudo \
     traceroute \
     unzip \
   && dnf clean all
 
+RUN sed -ir '/%wheel/s/^#? */# /;/%wheel.*NOPASS/s/^# *//' /etc/sudoers
+
 ARG container_user=devops
-RUN useradd --create-home --shell /bin/bash $container_user
+RUN useradd --create-home --shell /bin/bash --groups wheel $container_user
 USER $container_user
 RUN mkdir -p /home/$container_user/{.local/state,.local/share,.cache}
 ENV HISTFILE=/home/$container_user/.local/state/bash_history
