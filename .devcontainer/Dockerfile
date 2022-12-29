@@ -19,6 +19,9 @@ RUN dnf update -y \
     unzip \
   && dnf clean all
 
+# WSL base image specific, to extract into its own image later
+ADD wsl.conf resolv-default.conf /etc
+
 RUN sed -ir '/%wheel/s/^#? */# /;/%wheel.*NOPASS/s/^# *//' /etc/sudoers
 
 ARG container_user=devops
