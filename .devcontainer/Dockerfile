@@ -6,6 +6,7 @@ RUN dnf update -y \
   && dnf upgrade --refresh -y \
   && dnf install -y \
     bind-utils \
+    e2fsprogs \
     findutils \
     git \
     iproute \
